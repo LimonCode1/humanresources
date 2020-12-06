@@ -5,11 +5,11 @@
 	"main": "index.js",
 	"homepage": "https://limoncode1.github.io/humanresources",
 	"scripts": {
-		"deploy": "gh-pages -d src/",
+		"deploy": "gh-pages -d src/index.js",
 		"dev": "nodemon src/index.js"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Carlos Andres Sanchez",
 	"license": "ISC",
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^5.15.1",

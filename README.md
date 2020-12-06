@@ -1,1 +1,1 @@
-# aplicacion para gectionar procesos de recursos humanos
+# aplicacion para gestionar procesos de recursos humanos
