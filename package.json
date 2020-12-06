@@ -1,9 +1,11 @@
 {
-	"name": "nodejs-mysql",
+	"name": "gh-app",
 	"version": "0.0.1",
 	"description": "",
 	"main": "index.js",
+	"homepage": "https://limoncode1.github.io/humanresources",
 	"scripts": {
+		"deploy": "gh-pages -d src/",
 		"dev": "nodemon src/index.js"
 	},
 	"keywords": [],
@@ -20,6 +22,7 @@
 		"express-mysql-session": "^2.1.4",
 		"express-session": "^1.17.1",
 		"express-validator": "^6.6.1",
+		"gh-pages": "^3.1.0",
 		"morgan": "^1.10.0",
 		"mysql": "^2.18.1",
 		"passport": "^0.4.1",
