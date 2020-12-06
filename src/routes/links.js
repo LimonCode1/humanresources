@@ -24,7 +24,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
 router.get('/:id', isLoggedIn, async (req, res) => {
 	const { id } = req.params;
 	// console.log('req> ' + id);
-	const user = await poolDatabase.query('SELECT * FROM usuario where id = ?', [id]);
+	const user = await poolDatabase.query('SELECT * FROM Usuario where id = ?', [id]);
 	// console.log('data userrrr: ' + user[0]);
 	res.render('links/editprofile', { userData: user[0] });
 });
@@ -45,7 +45,7 @@ router.post('/:id', isLoggedIn, async (req, res) => {
 	// siempre debe ir con await la encriptacion y las concultas debido a que estas toman tiempo
 	updateUser.clave = await helpers.encryptPassword(updateUser.clave);
 	// console.log('clave cifrada: ' + updateUser.clave);
-	await poolDatabase.query('update usuario set ? where id = ?', [updateUser, id]);
+	await poolDatabase.query('update Usuario set ? where id = ?', [updateUser, id]);
 	req.flash('success', 'has actualizado con exito tus datos 😉 ' + updateUser.nombre);
 	res.redirect('/perfil');
 });
@@ -148,14 +148,14 @@ router.post('/nomina/:id', isLoggedIn, async (req, res) => {
 
 router.get('/delete/:id', isLoggedIn, async (req, res) => {
 	const { id } = req.params;
-	await poolDatabase.query('DELETE FROM usuario WHERE ID = ?', [id]);
+	await poolDatabase.query('DELETE FROM Usuario WHERE ID = ?', [id]);
 	req.flash('success', 'se ha eliminado correctamente 🤖');
 	res.redirect('/signin');
 });
 
 router.get('/edit/:id', isLoggedIn, async (req, res) => {
 	const { id } = req.params;
-	const userData = await poolDatabase.query('SELECT * FROM usuario WHERE ID = ?', [id]);
+	const userData = await poolDatabase.query('SELECT * FROM Usuario WHERE ID = ?', [id]);
 	// console.log(userData[0]);
 	res.render('/links/edit', { user: userData[0] });
 });

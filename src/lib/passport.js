@@ -12,7 +12,7 @@ passport.use(
 		},
 		async (req, username, clave, done) => {
 			// console.log(req.body);
-			const rows = await poolDatabase.query('select * from usuario where username = ?', [username]);
+			const rows = await poolDatabase.query('select * from Usuario where username = ?', [username]);
 			// console.log(rows[0]);
 			if (rows.length > 0) {
 				const user = rows[0];
@@ -57,7 +57,7 @@ passport.use(
 				tipo_usuario,
 			};
 			newUser.clave = await helpers.encryptPassword(clave);
-			const result = await poolDatabase.query('insert into usuario set ?', [newUser]);
+			const result = await poolDatabase.query('insert into Usuario set ?', [newUser]);
 			// console.log(result);
 			newUser.id = result.insertId;
 			return done(null, newUser);
@@ -76,7 +76,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-	const rows = await poolDatabase.query('select * from usuario where id = ?', [id]);
+	const rows = await poolDatabase.query('select * from Usuario where id = ?', [id]);
 	// console.log('deserializado: ' + rows[0]);
 	done(null, rows[0]);
 });

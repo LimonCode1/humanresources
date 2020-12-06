@@ -2,9 +2,9 @@
 // es como el modelo de conexion en php
 module.exports = {
 	database: {
-		host: 'localhost',
-		user: 'root',
-		password: '',
-		database: 'Gestion_humana',
+		host: 'byyw2ffkk3rifwio0brw-mysql.services.clever-cloud.com',
+		user: 'u079dhq6ii3b5tvh',
+		password: 'TD2N5iafK5NnQnFuaTBG',
+		database: 'byyw2ffkk3rifwio0brw',
 	},
 };
