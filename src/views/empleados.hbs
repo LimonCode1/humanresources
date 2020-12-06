@@ -1,0 +1,104 @@
+<div class="container mt-5">
+  <div class="card card-body shadow-lg border-0">
+    <h3 class="mx-auto my-4">Vincular empleado</h3>
+    <form action="/empleados" method="POST">
+      <div class="row input-group-sm">
+        <div class="form-group col">
+          <label for="cedula">cedula</label>
+          <input type="text" name="cedula" id="cedula" class="form-control" autofocus required>
+        </div>
+        <div class="col">
+          <label for="name">Nombres</label>
+          <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        <div class="col">
+          <label for="lastName1">Primer Apellido</label>
+          <input type="text" name="lastName1" id="lastName1" class="form-control" required>
+        </div>
+        <div class="col">
+          <label for="lastName2">Segundo Apellido</label>
+          <input type="text" name="lastName2" id="lastName2" class="form-control " required>
+          <small id="emailHelp" class="form-text text-muted">Este campo no es obligatorio</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col">
+          <label for="direccion">direccion</label>
+          <input type="text" name="direccion" id="direccion" class="form-control" required>
+          <small id="emailHelp" class="form-text text-muted">Este campo no es obligatorio</small>
+        </div>
+        <div class="col">
+          <label for="telefono">telefono/celular</label>
+          <input type="tel" name="telefono" id="telefono" class="form-control" required>
+        </div>
+        <div class="col">
+          <label for="cargo">Cargo</label>
+          <select name="cargo" id="cargo" class="form-control" required>
+            <option selected>Elige</option>
+            <option value="1">Analista Contable</option>
+            <option value="2">Analista Financiero</option>
+            <option value="3">Analista de Soporte</option>
+            <option value="4">Desarrollador</option>
+            <option value="5">Inspector de HSEQ</option>
+            <option value="6">Operario</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block shadow">Vincular ✔️</button>
+    </form>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="card card-body shadow-lg border-0">
+    <div class="row">
+      <div class="col-lg-12">
+        <table id="example" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>cedula</th>
+              <th>nombres</th>
+              <th>apellidos</th>
+              <th>direccion</th>
+              <th>telefono</th>
+              <th>cargo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{!-- =============== --}}
+            {{#each listaEmpleados}}
+            {{!-- empezamos a pintar daticos en pantalla! --}}
+            <tr>
+              <td>{{cedula}}</td>
+              <td>{{nombre}}</td>
+              <td>{{apellido_1}}</td>
+              <td>{{direccion}}</td>
+              <td>{{telefono}}</td>
+              <td>{{cargo}}</td>
+            </tr>
+            {{else}}
+            <tr>
+              <th>vacio</th>
+              <th>vacio</th>
+              <th>vacio</th>
+              <th>vacio</th>
+              <th>vacio</th>
+              <th>vacio</th>
+            </tr>
+            {{/each}}
+            {{!-- ================================= --}}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>cedula</th>
+              <th>nombres</th>
+              <th>apellidos</th>
+              <th>direccion</th>
+              <th>telefono</th>
+              <th>cargo</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

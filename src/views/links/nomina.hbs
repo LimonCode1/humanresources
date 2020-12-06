@@ -1,0 +1,228 @@
+<div class="container mt-5">
+    <div class="form-row">
+        <div class="col-12">
+            <h2 class="text-center my-3">Salario año 2020</h2>
+        </div>
+        <div class="col-6">
+            <label for="salario">Salario Minimo</label>
+            <input type="text" name="salario" class="form-control border-0" id="salario" placeholder="$ 877803"
+                readonly>
+        </div>
+        <div class="col-6">
+            <label for="auxTransporte">Auxilio de Transporte</label>
+            <input type="text" name="auxilio" class="form-control border-0" id="auxTransporte" placeholder="$ 102853"
+                readonly>
+        </div>
+        <div class="col-12">
+            <h3 class="text-center my-4">Liquidación horas extras</h3>
+        </div>
+        <div class="col-4">
+            <span class="text-center form-control border-0 bg-success">SALARIO MES: $877805</span>
+        </div>
+        <div class="col-4">
+            <span class="text-center form-control border-0 bg-success">VALOR DIA: $29260</span>
+        </div>
+        <div class="col-4">
+            <span class="text-center form-control border-0 bg-success">VALOR HORA: $3658</span>
+        </div>
+        <div class="my-3 col-6">
+            <h3 class="text-center">DIURNA</h3>
+            <table class="table table-striped shadow rounded">
+                <thead class="thead-dark">
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Recargo</th>
+                    <th scope="col">Valor Hora</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Hora Extra</th>
+                        <th>125%</th>
+                        <th>$ 4572</th>
+                    </tr>
+                    <tr>
+                        <th>Hora dominical con descanso</th>
+                        <th>75%</th>
+                        <th>$ 2743</th>
+                    </tr>
+                    <tr>
+                        <th>Extra dominical o Festivo</th>
+                        <th>200%</th>
+                        <th>$ 7315</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="my-3 col-6">
+            <h3 class="text-center">NOCTURNA</h3>
+            <table class="table table-striped shadow rounded">
+                <thead class="thead-dark">
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Recargo</th>
+                    <th scope="col">Valor Hora</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Recargo</th>
+                        <th>35%</th>
+                        <th>$ 1280</th>
+                    </tr>
+                    <tr>
+                        <th>Hora extra</th>
+                        <th>175%</th>
+                        <th>$ 6401</th>
+                    </tr>
+                    <tr>
+                        <th>Hora dominical con descanso</th>
+                        <th>110%</th>
+                        <th>$ 4023</th>
+                    </tr>
+                    <tr>
+                        <th>Extra dominical o Festivo</th>
+                        <th>250%</th>
+                        <th>$ 9144</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="my-3 col-7 mx-auto">
+            <table class="table table-striped shadow rounded">
+                <tbody>
+                    <tr>
+                        <th>Hora dominical / Festivo habitual</th>
+                        <th>175%</th>
+                        <th>$ 6401</th>
+                    </tr>
+                    <tr>
+                        <th>Hora extra dominical / festivo</th>
+                        <th>210%</th>
+                        <th>$ 7681</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+    <div class="card card-body shadow-lg border-0">
+        <h2 class="my-5 text-center">Liquidar nomina</h2>
+        <div class="form-group">
+            <form action="/links/nomina/{{user.id}}" method="POST">
+                <div class="row">
+                    <div class="col-4">
+                        <label for="periodoPago1">Periodo de Pago inicial</label>
+                        <input type="date" name="periodoPago1" class="form-control" id="periodoPago1" required>
+                    </div>
+                    <div class="col-4">
+                        <label for="periodoPago2">Periodo de Pago final</label>
+                        <input type="date" name="periodoPago2" class="form-control" id="periodoPago2" required>
+                    </div>
+                    <div class="col-4">
+                        <label for="fechaLiquidacion">Fecha de liquidacion</label>
+                        <input type="date" name="fechaLiquidacion" class="form-control" id="fechaLiquidacion" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="empleado">Empleado</label>
+                        <select name="empleado" id="empleado" class="form-control" required>
+                            <option selected>Elegir empleado</option>
+                            {{#each empleados}}
+                            <option value="{{cedula}}">{{nombre}} {{apellido_1}}</option>
+                            {{else}}
+                            <option>Aun no tienes empleados</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label for="basico">Salario basico</label>
+                        <input type="number" name="basico" id="basico" class="form-control" placeholder="$" required>
+                    </div>
+                    <div class="col-4">
+                        <label for="dias">Dias Liquidados</label>
+                        <input type="text" name="dias" id="dias" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="extras">Horas extras diurnas</label>
+                        <input type="text" name="extras" id="extras" class="form-control" required>
+                    </div>
+                    <div class="col-4">
+                        <label for="extrasNoc">Horas extras nocturnas</label>
+                        <input type="text" name="extrasNoc" id="extrasNoc" class="form-control" required>
+                    </div>
+                    <div class="col-4">
+                        <label for="extrasdf">Horas extras dominical/festivo</label>
+                        <input type="text" name="extrasDf" id="extrasdf" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="nocturnas">Horas nocturnas</label>
+                        <input type="text" name="nocturnas" id="nocturnas" class="form-control" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="dominical">Horas trabajo Dominical y Festivo</label>
+                        <input type="text" name="dominical" id="dominical" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mt-2 col-12">
+                        <button type="submit" class="btn btn-success btn-block shadow p-2">Calcular</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="card card-body shadow-lg border-0 my-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <table id="example" class="table table-bordered  display nowrap table-striped" cellspacing="0" width="100%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Dias Liquidados</th>
+                        <th>Salario Basico</th>
+                        <th>Neto Pagado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{!-- =============== --}}
+                    {{#each empleados}}
+                    {{!-- empezamos a pintar daticos en pantalla! --}}
+                    <tr>
+                        <td>{{cedula}}</td>
+                        <td>{{nombre}}</td>
+                        <td>{{apellido_1}} {{apellido_2}}</td>
+                        <td>{{dias_liquidados}}</td>
+                        <td>$ {{salario_basico}}</td>
+                        <td>$ {{neto_pagado}}</td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <th>vacio</th>
+                        <th>vacio</th>
+                        <th>vacio</th>
+                        <th>vacio</th>
+                        <th>vacio</th>
+                        <th>vacio</th>
+                    </tr>
+                    {{/each}}
+                    {{!-- ================================= --}}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Dias Liquidados</th>
+                        <th>Salario Basico</th>
+                        <th>Neto Pagado</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+{{!-- mostraremos datos del usuario cuando se ha logueado --}}
+<div class="container mt-5">
+  <div class="card card-body shadow-lg border-0">
+    <h2 class="my-5 text-center">Bienvenid@ {{user.username}}</h2>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-4">
+          <a href="/links/{{user.id}}" class="btn btn-warning btn-block shadow p-4"> Actualiza tu perfil ✍️</a>
+        </div>
+        <div class="col-4">
+          <a href="/links/nomina/{{user.id}}" class="btn btn-success btn-block shadow p-4"> Liquidar Nomina 📚</a>
+        </div>
+        <div class="col-4">
+          <a href="/empleados" class="btn btn-primary btn-block shadow p-4"> Apartado de Empleados 📋 </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Gestion Humana APP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            {{!-- ahora validaremos si existe el usuario, me mostrara ciertos links, de lo
+                    contrario me mostrara otros --}}
+            {{#if user}}
+            <li class="nav-item">
+                <a class="nav-link" href="/perfil">Perfil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/empleados">Empleados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Cerrar Sesion</a>
+            </li>
+            {{else}}
+            {{!-- ahora en caso de que estemos en la pagina de inicio nos dejara crear un usuario o iniciar sesion --}}
+            <li class="nav-link">
+                <a href="/signin">Iniciar sesion</a>
+            </li>
+            <li class="nav-link">
+                <a href="/signup">Registrarse</a>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
